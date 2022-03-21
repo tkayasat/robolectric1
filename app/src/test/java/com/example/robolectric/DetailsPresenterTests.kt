@@ -16,9 +16,7 @@ private lateinit var viewContract: ViewDetailsContract
 
 @Before
 fun setUp() {
-
     MockitoAnnotations.initMocks(this)
-    detailsPresenter = DetailsPresenter(0)
     detailsPresenter.onAttach(viewContract)
 }
 @Test
@@ -41,7 +39,6 @@ fun onDecrement_Test() {
 }
 @Test
 fun onAttach() {
-    detailsPresenter.onDetach()
     detailsPresenter.onAttach(viewContract)
     detailsPresenter.onIncrement()
     verify(viewContract, times(1)).setCount(1)
