@@ -10,10 +10,9 @@ import com.example.robolectric.presenter.presenter.details.PresenterDetailsContr
 import kotlinx.android.synthetic.main.activity_details.*
 import java.util.*
 
-class DetailsActivity: AppCompatActivity(), ViewDetailsContract {
+class DetailsActivity : AppCompatActivity(), ViewDetailsContract {
 
-    private val presenter: PresenterDetailsContract = DetailsPresenter()
-
+    private val presenter: PresenterDetailsContract = DetailsPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +21,6 @@ class DetailsActivity: AppCompatActivity(), ViewDetailsContract {
     }
 
     private fun setUI() {
-        presenter.onAttach(this)
         val count = intent.getIntExtra(TOTAL_COUNT_EXTRA, 0)
         presenter.setCounter(count)
         setCountText(count)
@@ -50,3 +48,5 @@ class DetailsActivity: AppCompatActivity(), ViewDetailsContract {
         }
     }
 }
+
+
