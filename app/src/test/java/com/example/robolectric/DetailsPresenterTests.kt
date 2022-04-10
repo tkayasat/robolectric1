@@ -2,6 +2,7 @@ package com.example.robolectric
 
 import com.example.robolectric.presenter.presenter.details.DetailsPresenter
 import com.example.robolectric.view.details.ViewDetailsContract
+import com.example.robolectric.view.search.ViewSearchContract
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -19,6 +20,7 @@ fun setUp() {
     MockitoAnnotations.initMocks(this)
     detailsPresenter.onAttach(viewContract)
 }
+
 @Test
 fun setCounter_Test() {
     detailsPresenter.setCounter(1)
