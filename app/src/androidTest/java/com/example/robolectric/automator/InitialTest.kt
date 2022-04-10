@@ -1,4 +1,4 @@
-package com.example.robolectric
+package com.example.robolectric.automator
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
@@ -14,9 +14,7 @@ import org.junit.runner.RunWith
 @SdkSuppress(minSdkVersion = 18)
 class InitialTest {
     private val context = ApplicationProvider.getApplicationContext<Context>()
-
     private val packageName = context.packageName
-
 
     @Test
     fun test_DeviceNotNull() {

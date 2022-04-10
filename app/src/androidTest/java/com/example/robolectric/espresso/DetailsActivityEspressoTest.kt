@@ -1,4 +1,4 @@
-package com.example.robolectric
+package com.example.robolectric.espresso
 
 import android.widget.TextView
 import androidx.lifecycle.Lifecycle
@@ -9,6 +9,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.robolectric.R
 import com.example.robolectric.view.details.DetailsActivity
 import junit.framework.TestCase
 import org.junit.After

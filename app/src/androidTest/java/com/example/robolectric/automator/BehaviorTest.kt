@@ -1,4 +1,4 @@
-package com.example.robolectric
+package com.example.robolectric.automator
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
-import com.google.gson.annotations.Until
+import com.example.robolectric.R
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -28,9 +28,10 @@ class BehaviorTest {
 
         uiDevice.pressHome()
         val intent = context.packageManager.getLaunchIntentForPackage(packageName)
-        intent!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)//Чистим бэкстек от запущенных ранее Активити
+        intent!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         context.startActivity(intent)
-        uiDevice.wait(Until.hasObject(By.pkg(packageName).depth(0)), TIMEOUT)
+        uiDevice.wait(androidx.test.uiautomator.Until.hasObject(By.pkg(packageName).depth(0)),
+            TIMEOUT)
     }
 
     @Test
@@ -49,14 +50,14 @@ class BehaviorTest {
 
         val changedText =
             uiDevice.wait(
-                Until.findObject(By.res(packageName, "totalCountTextView")),
+                androidx.test.uiautomator.Until.findObject(By.res(packageName,
+                    "totalCountTextView")),
                 TIMEOUT
             )
 
         Assert.assertEquals(changedText.text.toString(),
             context.getString(R.string.test_value_automator))
     }
-
 
     @Test
     fun test_OpenDetailsScreen() {
@@ -66,7 +67,8 @@ class BehaviorTest {
 
         val changedText =
             uiDevice.wait(
-                Until.findObject(By.res(packageName, "totalCountTextView")),
+                androidx.test.uiautomator.Until.findObject(By.res(packageName,
+                    "totalCountTextView")),
                 TIMEOUT
             )
         Assert.assertEquals(changedText.text, "Number of results: 0")
