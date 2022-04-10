@@ -8,4 +8,8 @@
     <string name="decrement_text">-</string>
     <string name="increment_text">+</string>
     <string name="to_details">to details</string>
+    <string name="test_value_espresso">Number of results: 42</string>
+    <string name="test_value_automator">Number of results: 42</string>
+    <string name="build_flavour">.fake</string>
+    <string name="search">search</string>
 </resources>
