@@ -5,4 +5,4 @@ import com.example.robolectric.presenter.presenter.PresenterContract
 
 internal interface PresenterSearchContract : PresenterContract {
     fun searchGitHub(searchQuery: String)
-  }
+}

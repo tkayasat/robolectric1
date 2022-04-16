@@ -1,15 +1,21 @@
 package com.example.robolectric.repository
 
 import com.example.robolectric.model.SearchResponse
+import com.example.robolectric.model.SearchResult
+import com.example.robolectric.presenter.presenter.RepositoryContract
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.random.Random
 
-internal class GitHubRepository(private val gitHubApi: GitHubApi) {
+internal class GitHubRepository(private val gitHubApi: GitHubApi) : RepositoryContract {
 
-    fun searchGithub(
+    override fun searchGithub(
         query: String,
-        callback: GitHubRepositoryCallback
+        callback: RepositoryCallback
     ) {
         val call = gitHubApi.searchGithub(query)
         call?.enqueue(object : Callback<SearchResponse?> {
@@ -30,8 +36,13 @@ internal class GitHubRepository(private val gitHubApi: GitHubApi) {
         })
     }
 
-    interface GitHubRepositoryCallback {
-        fun handleGitHubResponse(response: Response<SearchResponse?>?)
-        fun handleGitHubError()
+    override fun searchGithub(query: String): Observable<SearchResponse> {
+        return gitHubApi.searchGithubRx(query)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override suspend fun searchGithubAsync(query: String): SearchResponse {
+        return gitHubApi.searchGithubAsync(query).await()
     }
 }
