@@ -13,5 +13,4 @@ internal interface ViewSearchContract : ViewContract {
     fun displayError()
     fun displayError(error: String)
     fun displayLoading(show: Boolean)
-    abstract fun SearchPresenter(viewContract: MainActivity): SearchPresenter
 }
